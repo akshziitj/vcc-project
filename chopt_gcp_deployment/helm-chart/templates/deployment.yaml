@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chopt-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chopt
+  template:
+    metadata:
+      labels:
+        app: chopt
+    spec:
+      containers:
+      - name: chopt
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+          requests:
+            cpu: "1"
+            memory: "2Gi"

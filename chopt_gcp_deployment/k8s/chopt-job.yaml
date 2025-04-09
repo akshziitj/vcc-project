@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: chopt-automl-session
+spec:
+  template:
+    spec:
+      containers:
+      - name: chopt-trainer
+        image: gcr.io/your-project-id/chopt-trainer:latest
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+        volumeMounts:
+        - mountPath: "/mnt/data"
+          name: gcs-bucket
+        env:
+        - name: CONFIG_PATH
+          value: "/mnt/data/config.yaml"
+      restartPolicy: Never
+      volumes:
+      - name: gcs-bucket
+        persistentVolumeClaim:
+          claimName: chopt-gcs-pvc
+  backoffLimit: 2

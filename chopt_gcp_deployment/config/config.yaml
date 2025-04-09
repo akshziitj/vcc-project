@@ -1,0 +1,16 @@
+h_params:
+  lr: {parameters: [0.01, 0.09], distribution: log_uniform, type: float, p_range: [0.001, 0.1]}
+  depth: {parameters: [5, 10], distribution: uniform, type: int, p_range: [5, 10]}
+  activation: {parameters: ['relu', 'sigmoid'], distribution: categorical, type: str, p_range: []}
+h_params_conditions: []
+h_params_conjunctions: []
+measure: test/accuracy
+order: descending
+step: 5
+population: 5
+tune:
+  pbt:
+    exploit: truncation
+    explore: perturb
+termination:
+  max_session_number: 50

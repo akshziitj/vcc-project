@@ -1,0 +1,26 @@
+image:
+  repository: gcr.io/your-project-id/chopt
+  tag: latest
+  pullPolicy: IfNotPresent
+
+resources:
+  limits:
+    nvidia.com/gpu: 1
+  requests:
+    cpu: "1"
+    memory: "2Gi"
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 5
+
+service:
+  type: LoadBalancer
+  port: 80
+
+firestore:
+  projectId: your-project-id
+
+gcs:
+  bucketName: chopt-model-artifacts-your-project-id
