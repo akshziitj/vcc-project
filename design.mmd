@@ -1,0 +1,27 @@
+graph LR
+    subgraph User
+        A["User Interface (CLI/Web)"]
+    end
+
+    subgraph CHOPT_Framework["CHOPT Framework"]
+        B[Configuration File]
+        C["Queue (CHOPT Sessions)"]
+        D[CHOPT Agent]
+        E["Master Agent (Stop-and-Go)"]
+        F[Web-Based Visual Tool]
+    end
+
+    subgraph NSML_Cloud["NSML Cloud"]
+        G["NSML Sessions (Live/Stop/Dead)"]
+        H[Cluster GPUs]
+        I[Model Snapshots & Metrics]
+    end
+
+    A -->|Submit Config| C
+    C -->|Process| D
+    D -->|Run on| G
+    G -->|Utilize| H
+    E -->|Monitor| H
+    E -->|Adjust GPU Allocation| D
+    F -->|Analyze| I
+

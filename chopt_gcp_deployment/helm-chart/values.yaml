@@ -1,5 +1,5 @@
 image:
-  repository: gcr.io/your-project-id/chopt
+  repository: gcr.io/vcc-sem3-2025/chopt
   tag: latest
   pullPolicy: IfNotPresent
 

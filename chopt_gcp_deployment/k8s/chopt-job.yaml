@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: chopt-trainer
-        image: gcr.io/your-project-id/chopt-trainer:latest
+        image: gcr.io/vcc-sem3-2025/chopt-trainer:latest
         resources:
           limits:
             nvidia.com/gpu: 1

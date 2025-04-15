@@ -17,7 +17,7 @@ resource "google_container_node_pool" "chopt_nodes" {
 
   node_config {
     machine_type = "n1-standard-4"
-    accelerators {
+    guest_accelerators {
       type  = "nvidia-tesla-k80"
       count = 1
     }
